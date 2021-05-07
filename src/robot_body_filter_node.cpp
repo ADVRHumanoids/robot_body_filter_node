@@ -9,9 +9,9 @@ class robot_body_filter
 public:
   robot_body_filter() : filter_chain_("sensor_msgs::PointCloud2")
   {
-    filter_chain_.configure("cloud_filter_chain");
-    pub_ = n_.advertise<sensor_msgs::PointCloud2>("/camera/depth/color/points_filtered", 1);
-    sub_ = n_.subscribe("/camera/depth/color/points", 1, &robot_body_filter::callback, this);
+    filter_chain_.configure("robot_body_filter_node/cloud_filter_chain");
+    pub_ = n_.advertise<sensor_msgs::PointCloud2>("/cloud_filtered", 1);
+    sub_ = n_.subscribe("/cloud_in", 1, &robot_body_filter::callback, this);
   }
   void callback(const sensor_msgs::PointCloud2ConstPtr& input)
   {

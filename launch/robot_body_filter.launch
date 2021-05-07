@@ -1,0 +1,25 @@
+<launch>
+
+  <!-- ocotmap False if use rosbag for octomap_point_cloud_centers-->
+  <arg name="octomap_on" default="false"/>
+
+    <!-- Include octomap if required -->
+    <node if="$(arg octomap_on)" pkg="octomap_server" type="octomap_server_node" name="octomap_server">
+        <param name="resolution" value="0.03" />
+        <!-- fixed map frame (set to 'map' if SLAM or localization running!) -->
+        <param name="frame_id" type="string" value="base_link" />
+        <!-- maximum range to integrate (speedup!) -->
+        <param name="sensor_model/max_range" value="5.0" />
+        <!-- data source to integrate (PointCloud2) -->
+        <remap from="cloud_in" to="/velodyne_points" />
+        <!-- Whether topics are published latched or only once per change. Frequent update: false. True static map. -->
+        <param name="latch" value="false"/> 
+    </node>
+
+  <node pkg="robot_body_filter_node" type="robot_body_filter_node_node" name="robot_body_filter_node">
+    <rosparam command="load" file="$(find robot_body_filter_node)/config/config.yaml" />
+    <remap from="cloud_in" to="/velodyne_points" />
+  </node>
+
+
+</launch>
