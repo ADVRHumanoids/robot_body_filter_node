@@ -2,16 +2,16 @@ cloud_filter_chain:
   - name: RobotBodyFilter
     type: robot_body_filter/RobotBodyFilterPointCloud2
     params:
-      frames/fixed: velodyne_calib
-      frames/sensor: velodyne_calib
-      frames/filtering: velodyne_calib
-      frames/output: velodyne_calib 
+      frames/fixed: pelvis
+      frames/sensor: pelvis
+      frames/filtering: pelvis
+      frames/output: pelvis
       sensor/point_by_point: False
       sensor/min_distance: 0.15
       sensor/max_distance: 0.0
       body_model/inflation/scale: 1.07
       body_model/inflation/padding: 0.05
-      body_model/robot_description_param: '/xbotcore/robot_description'
+      body_model/robot_description_param: '/robot_description'
       filter/model_pose_update_interval: 0.0
       filter/keep_clouds_organized: True
       filter/do_clipping: True
