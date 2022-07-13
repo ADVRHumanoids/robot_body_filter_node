@@ -9,7 +9,7 @@ class robot_body_filter
 public:
   robot_body_filter(std::string prefix="") : filter_chain_("sensor_msgs::PointCloud2")
   {
-    filter_chain_.configure(prefix+"body_filter_node/cloud_filter_chain");
+    filter_chain_.configure(prefix+"body_filter_node/"+prefix+"cloud_filter_chain");
     pub_ = n_.advertise<sensor_msgs::PointCloud2>("/cloud_filtered", 1);
     sub_ = n_.subscribe("/cloud_in", 1, &robot_body_filter::callback, this);
   }

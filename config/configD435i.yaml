@@ -1,16 +1,16 @@
-cloud_filter_chain:
+d435i_cloud_filter_chain:
   - name: RobotBodyFilter
     type: robot_body_filter/RobotBodyFilterPointCloud2
     params:
-      frames/fixed: velodyne_calib
-      frames/sensor: velodyne_calib
-      frames/filtering: velodyne_calib
-      frames/output: velodyne_calib 
+      frames/fixed: D435i_camera_depth_optical_frame
+      frames/sensor: D435i_camera_depth_optical_frame
+      frames/filtering: D435i_camera_depth_optical_frame
+      frames/output: D435i_camera_depth_optical_frame 
       sensor/point_by_point: False
-      sensor/min_distance: 0.15
-      sensor/max_distance: 0.0
-      body_model/inflation/scale: 1.07
-      body_model/inflation/padding: 0.05
+      sensor/min_distance: 0.25
+      sensor/max_distance: 1.75
+      body_model/inflation/scale: 1.15
+      body_model/inflation/padding: 0.075
       body_model/robot_description_param: '/xbotcore/robot_description'
       filter/model_pose_update_interval: 0.0
       filter/keep_clouds_organized: True
