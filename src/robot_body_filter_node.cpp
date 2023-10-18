@@ -1,6 +1,6 @@
 #include "ros/ros.h"
 #include "sensor_msgs/PointCloud2.h"
-#include "filters/filter_chain.h"
+#include "filters/filter_chain.hpp"
 #include <ros/console.h>
 
 class robot_body_filter
@@ -9,7 +9,8 @@ class robot_body_filter
 public:
   robot_body_filter() : filter_chain_("sensor_msgs::PointCloud2")
   {
-    filter_chain_.configure("robot_body_filter_node/cloud_filter_chain");
+    ros::NodeHandle n("~");
+    filter_chain_.configure(ros::this_node::getName() + "/cloud_filter_chain");
     pub_ = n_.advertise<sensor_msgs::PointCloud2>("/cloud_filtered", 1);
     sub_ = n_.subscribe("/cloud_in", 1, &robot_body_filter::callback, this);
   }
@@ -29,6 +30,15 @@ int main(int argc, char **argv)
 {
   ros::init(argc, argv, "load_filter_chain");
   robot_body_filter rbf;
-  ros::spin();
+
+  ros::NodeHandle n("~");
+  ros::Rate rate(n.param("rate", 100.0));
+  
+  while(ros::ok())
+  {
+    ros::spinOnce();
+    rate.sleep();
+  }
+  
   return 0;
 }
