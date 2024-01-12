@@ -1,0 +1,54 @@
+d435_head_cloud_filter_chain:
+  - name: RobotBodyFilter
+    type: robot_body_filter/RobotBodyFilterPointCloud2
+    params:
+      frames/fixed: odometry/world
+      frames/sensor: D435_head_camera_color_optical_frame
+      frames/filtering: pelvis
+      frames/output: D435_head_camera_color_optical_frame 
+      sensor/point_by_point: False
+      sensor/min_distance: 0.2
+      sensor/max_distance: 2.0
+      body_model/inflation/scale: 1.2
+      body_model/inflation/padding: 0.05
+      body_model/robot_description_param: '/xbotcore/robot_description'
+      filter/model_pose_update_interval: 0.005
+      filter/keep_clouds_organized: True
+      filter/do_clipping: True
+      filter/do_contains_test: True
+      filter/do_shadow_test: False
+      transforms/buffer_length: 15.0
+      transforms/timeout/reachable: 0.2
+      transforms/timeout/unreachable: 0.2
+      transforms/require_all_reachable: False
+      bounding_sphere/compute: True
+      bounding_box/compute: True
+      bounding_sphere/publish_cut_out_pointcloud: True
+      bounding_box/publish_cut_out_pointcloud: True 
+      ignored_links/bounding_sphere: []
+      ignored_links/bounding_box/bounding_sphere: []
+      ignored_links/contains_test: []
+      ignored_links/shadow_test: []
+      ignored_links/everywhere: []
+      ignored_links/bounding_box: []
+      only_links: ['wheel_1', 'wheel_2', 'ankle1_1', 'ankle1_2', 'ankle2_1', 'ankle2_2', 'knee_1', 'knee_2', 'hip2_1', 'hip2_2']
+      body_model/dynamic_robot_description/field_name: robot_model
+      local_bounding_box/marker: False
+      local_bounding_box/marker: False
+      local_bounding_box/frame_id: pelvis
+      oriented_bounding_box/compute: False
+      oriented_bounding_box/debug: False
+      oriented_bounding_box/publish_cut_out_pointcloud: False
+      oriented_bounding_box/marker: False
+      local_bounding_box/compute: False
+      local_bounding_box/publish_cut_out_pointcloud: False
+      local_bounding_box/debug: False 
+      bounding_sphere/debug: False
+      bounding_sphere/marker: False
+      bounding_box/debug: False
+      bounding_box/marker: False
+      debug/pcl/inside: False
+      debug/pcl/clip: False
+      debug/pcl/shadow: False
+      debug/marker/contains: False
+      debug/marker/shadow: False
