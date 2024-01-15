@@ -1,3 +1,4 @@
+<?xml version="1.0" ?>
 <launch>
 
   <!--node pkg="robot_body_filter_node" type="robot_body_filter_node" name="vel_body_filter_node" args="vel_">
