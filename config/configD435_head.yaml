@@ -31,7 +31,7 @@ d435_head_cloud_filter_chain:
       ignored_links/shadow_test: []
       ignored_links/everywhere: []
       ignored_links/bounding_box: []
-      only_links: ['wheel_1', 'wheel_2', 'ankle1_1', 'ankle1_2', 'ankle2_1', 'ankle2_2', 'knee_1', 'knee_2', 'hip2_1', 'hip2_2']
+      #only_links: ['wheel_1', 'wheel_2', 'ankle1_1', 'ankle1_2', 'ankle2_1', 'ankle2_2', 'knee_1', 'knee_2', 'hip2_1', 'hip2_2']
       body_model/dynamic_robot_description/field_name: robot_model
       local_bounding_box/marker: False
       local_bounding_box/marker: False
